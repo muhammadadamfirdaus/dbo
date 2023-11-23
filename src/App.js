@@ -12,6 +12,10 @@ import Profile from "./pages/profile";
 import ProfileUpdate from "./pages/profile/profileUpdate";
 import "./App.css";
 
+import Customers from "./pages/customers/Customers";
+import DetailCustomer from "./pages/customers/detailCustomer";
+import Products from "./pages/products/Products";
+
 function App() {
   return (
     <>
@@ -23,6 +27,10 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/email-verification" element={<VerifyEmail />} />
           <Route path="/auth-success" element={<AuthSuccess />} />
+
+          <Route path="/customers" element={<Customers />} />
+          <Route path="/customers/:id" element={<DetailCustomer />} />
+          <Route path="/products" element={<Products />} />
 
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile-edit" element={<ProfileUpdate />} />

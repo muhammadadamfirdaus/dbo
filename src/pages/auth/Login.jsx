@@ -9,11 +9,11 @@ function Login() {
   const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth);
 
   const [formData, setFormData] = useState({
-    email: "",
+    username: "",
     password: "",
   });
 
-  const { email, password } = formData;
+  const { username, password } = formData;
 
   const [messageLogin, setMessageLogin] = useState(message);
 
@@ -42,13 +42,13 @@ function Login() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
     const userData = {
       // fullname,
-      email,
+      username,
       password,
     };
 
+    console.log(userData);
     dispatch(login(userData));
   };
 
@@ -60,16 +60,31 @@ function Login() {
       <div className="flex flex-col justify-center md:items-center md:w-2/4 xl:w-2/6 mx-auto h-screen">
         <div className="flex flex-col items-center px-8 mb-3">
           <h1 className="font-medium text-2xl md:text-3xl mb-2">
-            Welcome to <span className="font-semibold text-[#FCCF08]">Xaurius</span>
+            Welcome to <span className="font-semibold text-[#FCCF08]">DBO</span>
           </h1>
           <p>To keep connected with us please login with your personal information by email address and password.</p>
+
+          <div className="border border-slate-500 px-2 py-2 rounded-md">
+            <div className="flex">
+              <span className="mr-2">Username:</span>
+              <span>kminchelle</span>
+            </div>
+            <div className="flex">
+              <span className="mr-2">Password:</span>
+              <span>0lelplR</span>
+            </div>
+          </div>
         </div>
         <form onSubmit={onSubmit} className="w-full px-8 pt-6 pb-8 mb-4">
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="loginEmail">
+            {/* <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="loginEmail">
               Email
             </label>
-            <input id="loginEmail" name="email" type="text" value={email} placeholder="Email" onChange={onChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            <input id="loginEmail" name="email" type="text" value={email} placeholder="Email" onChange={onChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" /> */}
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="userName">
+              Username
+            </label>
+            <input id="loginUsername" name="username" type="text" value={username} placeholder="Username" onChange={onChange} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
           </div>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="loginPassword">

@@ -6,7 +6,7 @@ const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
   message: "",
-  // user: user ? user : null,
+  user: user ? user : null,
   isError: user && user.success ? false : true,
   isSuccess: user && user.success ? true : false,
   isLoading: false,
@@ -97,7 +97,6 @@ export const authSlice = createSlice({
         state.message = action.payload.msg;
         state.user = action.payload;
         state.isEmailVerificationSuccess = action.payload.success;
-        state.token = action.payload.data.orang.user_jwt_token;
       })
       .addCase(emailVerification.rejected, (state, action) => {
         state.isLoading = false;
@@ -108,13 +107,12 @@ export const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(login.fulfilled, (state, action) => {
-        console.log(action.payload);
+        console.log(action.payload, state);
         state.isLoading = false;
         state.isError = state.isSuccess === false ? true : false;
-        state.isSuccess = action.payload.success;
+        state.isSuccess = state.user ? true : false;
         state.message = action.payload.msg;
         state.user = action.payload;
-        state.token = action.payload.data.user.user_jwt_token;
       })
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
